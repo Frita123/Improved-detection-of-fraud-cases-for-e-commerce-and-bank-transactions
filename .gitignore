@@ -9,6 +9,9 @@ __pycache__/
 .ipynb_checkpoints/
 notebooks/*.ipynb
 
+*.pkl
+models/
+notebooks/models/
 
 # Data
 data/
