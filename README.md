@@ -1,187 +1,212 @@
-# Improved-detection-of-fraud-cases-for-e-commerce-and-bank-transactions
-Fraud Detection System 
+# 🛡️ Improved Detection of Fraud Cases for E-Commerce and Bank Transactions
 
-Improved Detection of Fraud Cases for E-Commerce and Bank Transactions
+This project focuses on building robust machine learning models to detect fraudulent transactions using two datasets:
 
-1. Introduction
+- E-commerce fraud dataset  
+- Credit card transaction dataset  
 
-Fraud detection is a critical challenge in both e-commerce platforms and banking systems due to highly imbalanced data and evolving fraud patterns.
-This project focuses on building machine learning models to detect fraudulent transactions using two datasets:
+The pipeline includes feature engineering, model training, evaluation, explainability (SHAP), and preparation for deployment via a Streamlit dashboard.
 
-E-commerce Fraud Dataset
+---
 
-Credit Card Transaction Dataset
+## 📌 Project Objectives
 
-Both datasets were preprocessed, feature-engineered, balanced, and split into training and testing sets prior to modeling.
+- Detect fraudulent transactions with high accuracy
+- Compare performance across two datasets
+- Provide model explainability using SHAP
+- Visualize results via ROC curves and feature importance
+- Prepare for real-time inference using a Streamlit dashboard
 
-The main objectives were:
+---
 
-Handle class imbalance effectively
+## ✅ Completed Tasks
 
-Train robust classification models
+### Task 1 — Data Preparation & Feature Engineering
 
-Compare model performance across datasets
+✔ Cleaned raw datasets  
+✔ Handled missing values  
+✔ Encoded categorical variables  
+✔ Scaled numerical features  
+✔ Generated engineered features  
+✔ Split into train/test sets  
 
-Visualize results
+Processed files are stored in:
 
-Save trained models for deployment
+data/processed/
 
-2. Datasets
-2.1 E-Commerce Fraud Dataset
 
-Contains transaction and user behavior features
+---
 
-Target column: class (0 = Normal, 1 = Fraud)
+### Task 2 — Model Training
 
-Dataset was:
+Random Forest classifiers were trained separately for:
 
-Cleaned
+- Fraud Dataset  
+- Credit Card Dataset  
 
-Feature engineered
+Saved artifacts:
 
-Balanced
+- Trained models (`.pkl`)
+- Feature scalers
 
-Split into train/test sets
+These are excluded from Git via `.gitignore`.
 
-Saved files:
+---
 
-fraud_train_fe.csv
+### Task 3 — Model Evaluation
 
-fraud_test_fe.csv
+Metrics computed:
 
-2.2 Credit Card Dataset
+- ROC Curve
+- AUC Score
+- Feature importance (Random Forest)
 
-Contains PCA-transformed transaction features (V1–V28), plus:
+Visualizations:
 
-Time
+✔ ROC curves for both datasets  
+✔ Top 15 RF feature importance plots  
 
-Amount
+---
 
-Engineered features (user_proxy, hour)
+### Task 4 — Model Explainability (SHAP)
 
-Target column: Class
+Implemented SHAP for both models:
 
-Saved files:
+✔ Beeswarm plots  
+✔ SHAP bar charts  
+✔ Mean absolute SHAP values  
+✔ Combined feature comparison tables  
 
-creditcard_train_fe.csv
+Key outputs:
 
-creditcard_test_fe.csv
+- SHAP summary plots  
+- Feature importance rankings  
+- CSV comparison tables  
 
-Both datasets were already balanced before modeling.
+All SHAP artifacts are saved locally and ignored by Git.
 
-3. Methodology
-3.1 Preprocessing
+---
 
-For each dataset:
+## 📊 Explainability Outputs
 
-Features separated from target labels
+Generated:
 
-Standardization applied using StandardScaler
+- SHAP beeswarm plots  
+- SHAP bar charts  
+- Combined comparison table:
 
-No categorical encoding required (datasets already numeric)
+notebooks/shap_outputs/
 
-3.2 Models Used
 
-Two supervised classifiers were trained on each dataset:
+---
 
-✅ Logistic Regression
+## 📁 Project Structure
 
-Linear baseline model
+Improved-detection-of-fraud-cases/
 
-Fast and interpretable
-
-✅ Random Forest
-
-Ensemble-based model
-
-Captures non-linear relationships
-
-Robust to noise
-
-3.3 Evaluation Metrics
-
-Because fraud detection is an imbalanced classification problem, the following metrics were used:
-
-F1-score
-
-AUC–PR (Area Under Precision–Recall Curve)
-
-Confusion Matrix
-
-Precision–Recall Curves
-
-These metrics emphasize minority (fraud) class performance.
-
-4. Results
-
-For each dataset:
-
-Logistic Regression and Random Forest were trained
-
-Confusion matrices were plotted
-
-Precision–Recall curves were generated
-
-Final metrics were collected
-
-Bar charts were also generated to visually compare:
-
-F1 Scores
-
-AUC-PR Scores
-
-5. Model Saving
-
-For reproducibility and deployment, trained artifacts were saved using joblib:
-
-Saved Files
-models/
 │
-├── fraud_logreg.pkl
-├── fraud_rf.pkl
-├── fraud_scaler.pkl
+├── data/
+│ ├── raw/
+│ └── processed/
 │
-├── creditcard_logreg.pkl
-├── creditcard_rf.pkl
-├── creditcard_scaler.pkl
+├── notebooks/
+│ ├── shap.ipynb
+│ └── shap_outputs/ (ignored by git)
+│
+├── models/ (ignored by git)
+│
+├── src/
+│ ├── data_loader.py
+│ ├── feature_engineering.py
+│ └── train.py
+│
+├── .gitignore
+├── requirements.txt
+└── README.md
 
 
-These files allow inference without retraining.
+---
 
-6. Key Observations
+## ⚙️ How to Run
 
-Random Forest consistently outperformed Logistic Regression in F1 and AUC-PR.
+### 1. Create virtual environment
 
-Balancing significantly improved fraud recall.
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+2. Install dependencies
+pip install -r requirements.txt
+3. Run SHAP explainability
+Open:
 
-Credit Card data showed stronger separability due to PCA features.
+notebooks/shap.ipynb
+Run all cells.
 
-Logistic Regression provided a strong baseline but struggled with complex patterns.
+📈 Models Used
+Random Forest Classifier (Fraud)
 
-Precision–Recall curves highlighted Random Forest’s superior fraud detection capability.
+Random Forest Classifier (Credit Card)
 
-7. Conclusion
+🔐 Git Management
+Ignored files:
 
-This project successfully developed a modular fraud detection pipeline for two transaction datasets. Through preprocessing, balancing, and ensemble modeling:
+.pkl
 
-High fraud detection performance was achieved
+SHAP plots
 
-Models were evaluated using appropriate imbalanced metrics
+SHAP CSV outputs
 
-Trained models were saved for deployment
+Virtual environment
 
-Random Forest emerged as the best-performing model across both datasets.
+Handled via .gitignore.
 
-8. Future Work
+🚀 Next Steps
+🔹 Task 5 — Streamlit Dashboard (Upcoming)
+Build an interactive dashboard with:
 
-Hyperparameter tuning (GridSearch / Bayesian Optimization)
+✅ File upload / manual input
+✅ Fraud probability prediction
+✅ SHAP explanation per transaction
+✅ Feature importance visualization
+✅ ROC curve display
 
-XGBoost / LightGBM experiments
+Planned features:
 
-Threshold optimization
+Sidebar controls
 
-Explainability (SHAP)
+Dataset selector
 
-Real-time inference pipeline
+Real-time prediction
 
-Model monitoring for concept drift
+Explainability panel
+
+🔹 Task 6 — Testing
+Implement:
+
+Unit tests for preprocessing
+
+Model prediction tests
+
+Input validation
+
+Edge-case testing
+
+Using:
+
+pytest
+
+🎯 Future Improvements
+Hyperparameter tuning
+
+Model comparison (XGBoost / LightGBM)
+
+Real-time API deployment
+
+Dockerization
+
+Cloud hosting
+
+👩‍💻 Author
+Firehiwet Zerihun
+IT Technician | Data Analyst | Machine Learning Practitioner
+

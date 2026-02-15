@@ -13,6 +13,16 @@ notebooks/*.ipynb
 models/
 notebooks/models/
 
+# SHAP outputs
+notebooks/shap_outputs/
+notebooks/*.png
+notebooks/*.csv
+
+# Models / pickles
+*.pkl
+*.joblib
+
+
 # Data
 data/
 
