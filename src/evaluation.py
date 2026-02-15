@@ -11,7 +11,7 @@ from sklearn.metrics import (
 
 import joblib
 
-#path
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 MODEL_DIR = BASE_DIR / "models"
 

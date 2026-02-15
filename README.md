@@ -208,5 +208,5 @@ Cloud hosting
 
 👩‍💻 Author
 Firehiwet Zerihun
-IT Technician | Data Analyst | Machine Learning Practitioner
+
 
